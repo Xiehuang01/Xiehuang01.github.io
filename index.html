@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>F_MUSIC</title>
+    <link rel="icon" href="icon.png" type="image/png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <h2>F_MUSIC</h2>
+            <button class="collapse-btn" id="collapseBtn">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+        </div>
+        <div class="main-search">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="searchInput" placeholder="搜索乐谱..." autocomplete="off">
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item nav-link active" data-view="all">
+                <i class="fas fa-music"></i>
+                <span>我的乐谱</span>
+            </a>
+            <a href="#" class="nav-item nav-link" data-view="liked">
+                <i class="fas fa-heart"></i>
+                <span>我的喜欢</span>
+            </a>
+            <button id="addNewBtn" class="nav-item nav-button">
+                <i class="fas fa-plus"></i>
+                <span>新建乐谱</span>
+            </button>
+            <button id="addFolderBtn" class="nav-item nav-button">
+                <i class="fas fa-folder-plus"></i>
+                <span>新建分组</span>
+            </button>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="theme-toggle" id="themeToggle">
+                <i id="themeIcon" class="fas fa-sun theme-icon"></i>
+            </div>
+            <div class="reset-btn" id="resetBtn">
+                <i class="fas fa-redo-alt"></i>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <button class="menu-btn" id="menuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div id="scoresList" class="scores-grid"></div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close">&times;</button>
+            <h2>新建乐谱</h2>
+            <form id="scoreForm">
+                <input type="text" id="titleInput" placeholder="输入乐谱标题" required>
+                <input type="date" id="dateInput" required value="">
+                <input type="url" id="linkInput" placeholder="输入链接地址" class="hidden">
+                <div class="upload-type-switch">
+                    <button type="button" class="switch-btn active" data-type="link">输入链接</button>
+                    <button type="button" class="switch-btn" data-type="image">上传图片</button>
+                </div>
+                <div class="file-upload hidden" id="imageUpload">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>点击或拖拽上传乐谱图片</span>
+                    <input type="file" id="imageInput" accept="image/*">
+                </div>
+                <button type="submit" class="btn">创建乐谱</button>
+            </form>
+        </div>
+    </div>
+    
+    <div class="overlay" id="overlay"></div>
+    <div id="warningModal" class="modal warning-modal">
+        <div class="modal-content warning-content">
+            <h3>温馨提示</h3>
+            <p>请勿上传任何违法内容，感谢您的配合！</p>
+            <button id="warningConfirmBtn" class="btn warning-btn">我知道了</button>
+        </div>
+    </div>
+    <div id="keyModal" class="modal key-modal">
+        <div class="modal-content key-content">
+            <h3>请输入密钥</h3>
+            <div class="key-input-container">
+                <input type="text" id="keyInput" placeholder="请输入访问密钥..." autocomplete="off">
+                <p class="key-error" style="display: none; color: #e74c3c;">密钥错误，请重新输入</p>
+            </div>
+            <button id="keySubmitBtn" class="btn key-btn">验证</button>
+        </div>
+    </div>
+    <div id="resetModal" class="modal reset-modal">
+        <div class="modal-content reset-content">
+            <h3>确认重置</h3>
+            <p>是否清除所有本地数据？此操作不可恢复。</p>
+            <div class="reset-buttons">
+                <button id="resetConfirmBtn" class="btn reset-confirm-btn">确定</button>
+                <button id="resetCancelBtn" class="btn reset-cancel-btn">取消</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
